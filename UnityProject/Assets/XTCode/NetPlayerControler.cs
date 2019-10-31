@@ -5,28 +5,32 @@ using UnityEngine.Networking;
 
 public class NetPlayerControler : NetworkBehaviour
 {
-
-    public GameObject PlayerUnitPrefab;
-
     // Start is called before the first frame update
     void Start()
     {
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //is this my unit ?
-        if (!hasAuthority) return;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (hasAuthority)
         {
-            gameObject.transform.Translate(0, 1, 0);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gameObject.transform.Translate(0, 1, 0);
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                CmdDestroyUnit(gameObject);
+            }
         }
     }
 
-
-
+    [Command]
+    public void CmdDestroyUnit(GameObject gameObjectPrefab)
+    {
+        Destroy(gameObjectPrefab);
+        NetworkServer.Destroy(gameObjectPrefab);
+    }
 }

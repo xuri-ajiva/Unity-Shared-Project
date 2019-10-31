@@ -10,15 +10,21 @@ public class PlayerConnectUnitScript : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        Debug.Log("Start :: " + isLocalPlayer );
         //my inut ?
         if (!isLocalPlayer) return;
-
-        CmdSpawnPlayerUnit();
+        CmdSpawnPlayerUnitWithClientAuthority();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer) return;
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            CmdSpawnPlayerUnitWithClientAuthority();
+        }
 
     }
 
@@ -26,11 +32,11 @@ public class PlayerConnectUnitScript : NetworkBehaviour
     /// This is Runing on the server 
     /// 
     [Command]
-    void CmdSpawnPlayerUnit()
+    public void CmdSpawnPlayerUnitWithClientAuthority( )
     {
-        var go = Instantiate(PlayerUnitPrefab);
-
+        var go = Instantiate(this.PlayerUnitPrefab);
         NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
-
+        
+        Debug.Log("Spawn :: " + connectionToClient );
     }
 }

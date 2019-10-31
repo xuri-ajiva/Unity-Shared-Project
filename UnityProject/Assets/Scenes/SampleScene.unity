@@ -197,6 +197,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 4487782180929775466, guid: 436cfbdb6508176498189cdabc946378, type: 3}
+  - {fileID: 4743679937284462045, guid: dca5f1ff041056340a8fb68056c788c8, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -325,7 +326,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 6.45e-43, y: 7.1e-44, z: 0, w: 7.569081e+28}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
