@@ -238,6 +238,10 @@ MonoBehaviour:
   wihide: 512
   heigth: 512
   scala: 2.93
+  Offest: {x: 0, y: 0}
+  GameObjectsToSpawn:
+  - {fileID: -927199367670048503, guid: 7c3af364775d648a89aa584b0e39bacc, type: 3}
+  SpawnObjets: 1
 --- !u!154 &197938168
 TerrainCollider:
   m_ObjectHideFlags: 0
