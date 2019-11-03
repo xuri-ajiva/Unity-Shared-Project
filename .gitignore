@@ -41,3 +41,8 @@ sysinfo.txt
 
 #rider
 .idea
+
+
+# custon
+*Assembly-CSharp.csproj
+*.csproj
