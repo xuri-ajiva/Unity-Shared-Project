@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\script\Bewegung.cs" />
+    <Compile Include="Assets\script\Mouselook.cs" />
     <Compile Include="Assets\script\Test.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/jakob/Documents/UnityProjekt/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -89,6 +91,15 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/jakob/Documents/UnityProjekt/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>C:/Users/jakob/Documents/UnityProjekt/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>C:/Users/jakob/Documents/UnityProjekt/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>C:/Users/jakob/Documents/UnityProjekt/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
