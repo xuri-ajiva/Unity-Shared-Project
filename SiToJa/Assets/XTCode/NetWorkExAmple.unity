@@ -221,7 +221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &197938167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,13 +235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   depth: 72
-  wihide: 512
-  heigth: 512
   scala: 2.93
-  Offest: {x: 0, y: 0}
   GameObjectsToSpawn:
   - {fileID: -927199367670048503, guid: 7c3af364775d648a89aa584b0e39bacc, type: 3}
   SpawnObjets: 1
+  TerainRoot: {fileID: 0}
+  depthDevider: 4
+  Example: {fileID: 0}
+  GameObjectsToTrack: []
 --- !u!154 &197938168
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -390,6 +391,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &314424330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 314424331}
+  m_Layer: 0
+  m_Name: FolowGameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &314424331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314424330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 317.1811, y: -188.70753, z: -185.07755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430554883
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,4 +551,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1344158357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344158359}
+  - component: {fileID: 1344158358}
+  m_Layer: 0
+  m_Name: Terrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1344158358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344158357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83345438dc92a4d258e2a2a8d418d54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depth: 20
+  scala: 2
+  GameObjectsToSpawn:
+  - {fileID: 7804304004733542460, guid: 6346dc43bf7a3765d9e63df7d8275b4d, type: 3}
+  SpawnObjets: 0
+  TerainRoot: {fileID: 1344158357}
+  depthDevider: 4
+  Example: {fileID: 7694099855185296506, guid: bd0428693be8f0f8a9b4c5fb656ef37c, type: 3}
+  GameObjectsToTrack:
+  - {fileID: 314424330}
+--- !u!4 &1344158359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344158357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
