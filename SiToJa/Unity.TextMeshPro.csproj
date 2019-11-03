@@ -12,10 +12,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4D25BB1D-A66D-7F7D-272C-19580EC1A5FB}</ProjectGuid>
+    <ProjectGuid>{76C6263E-A51F-ACC8-A166-BB510C8A3C2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Unity.TextMeshPro</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -56,46 +56,63 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\script\Test.cs" />
-     <Compile Include="Assets\TerainGenerator.cs" />
-     <Compile Include="Assets\XTCode\PlayerConectionScript.cs" />
-     <Compile Include="Assets\XTCode\XConst.cs" />
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\AssemblyInfo.cs.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\FastAction.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\MaterialReferenceManager.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TextContainer.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TextMeshPro.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TextMeshProUGUI.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Asset.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Character.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_CharacterInfo.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ColorGradient.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_CoroutineTween.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_DefaultControls.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Dropdown.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_EditorResourceManager.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontAsset.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontAssetCommon.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontAssetUtilities.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontFeaturesCommon.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_FontFeatureTable.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_InputField.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_InputValidator.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_LineInfo.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ListPool.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_MaterialManager.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_MeshInfo.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ObjectPool.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_PackageResourceImporter.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_RichTextTagsCommon.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_RichTextTagStack.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ScrollbarEventHandler.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SelectionCaret.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Settings.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_ShaderUtilities.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Sprite.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteAnimator.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteAsset.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteAssetImportFormats.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteCharacter.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SpriteGlyph.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Style.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_StyleSheet.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SubMesh.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_SubMeshUI.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_Text.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextElement.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextElement_Legacy.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextInfo.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextParsingUtilities.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_TextUtilities.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_UpdateManager.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMP_UpdateRegistery.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_EventManager.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_ExtensionMethods.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_MeshUtilities.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_Private.cs" />
+     <Compile Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\TMPro_UGUI_Private.cs" />
+     <None Include="\home\private\Work\Unity-Shared-Project\SiToJa\Library\PackageCache\com.unity.textmeshpro@2.0.1\Scripts\Runtime\Unity.TextMeshPro.asmdef" />
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
@@ -272,6 +289,18 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.VR">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.LinuxStandalone.Extensions">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -618,6 +647,16 @@
  <Reference Include="mscorlib">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{FFAE3A3D-4EFC-78A7-2D51-E328B591275D}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{F1094126-C6F3-AD8E-42CC-BC53F03AF7FC}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

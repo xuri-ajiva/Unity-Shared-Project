@@ -12,10 +12,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4D25BB1D-A66D-7F7D-272C-19580EC1A5FB}</ProjectGuid>
+    <ProjectGuid>{41FB142E-E505-8B8C-DC20-4D1BCAA971B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Unity.Timeline</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -56,46 +56,73 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\script\Test.cs" />
-     <Compile Include="Assets\TerainGenerator.cs" />
-     <Compile Include="Assets\XTCode\PlayerConectionScript.cs" />
-     <Compile Include="Assets\XTCode\XConst.cs" />
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Activation\ActivationMixerPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Activation\ActivationPlayableAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Activation\ActivationTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\AnimationOutputWeightProcessor.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\AnimationPlayableAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\AnimationTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Animation\ICurvesOwner.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\AnimationPlayableAssetUpgrade.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\AnimationTrackUpgrade.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\ClipUpgrade.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\TimelineUpgrade.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\AssetUpgrade\TrackUpgrade.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Attributes\TrackColorAttribute.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioClipProperties.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioMixerProperties.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioPlayableAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Audio\AudioTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\ClipCaps.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Control\ControlPlayableAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Control\ControlTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\DiscreteTime.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\InfiniteRuntimeClip.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\IntervalTree.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\RuntimeClip.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\RuntimeClipBase.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\RuntimeElement.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Evaluation\ScheduleRuntimeClip.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\IMarker.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\INotificationOptionProvider.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Marker.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\MarkerList.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\MarkerTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\CustomSignalEventDrawer.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\SignalAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\SignalEmitter.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\Signals\SignalReceiver.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Events\SignalTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Extensions\TrackExtensions.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\GroupTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\ActivationControlPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\BasicScriptPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\DirectorControlPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\ITimeControl.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\NotificationFlags.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\ParticleControlPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\PrefabControlPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\TimeControlPlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Playables\TimeNotificationBehaviour.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Properties\AssemblyInfo.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Scripting\PlayableTrack.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Timeline.deprecated.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineAsset_CreateRemove.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineAttributes.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelineClip.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TimelinePlayable.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\TrackAsset.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\Extrapolation.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\HashUtility.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\IPropertyCollector.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\IPropertyPreview.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\NotificationUtilities.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\TimelineCreateUtilities.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\TimelineUndo.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\TimeUtility.cs" />
+     <Compile Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Utilities\WeightUtility.cs" />
+     <None Include="\home\private\Unity\Hub\Editor\2019.2.11f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.timeline\Runtime\Unity.Timeline.asmdef" />
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
@@ -272,6 +299,18 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.VR">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.LinuxStandalone.Extensions">
+ <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -618,6 +657,16 @@
  <Reference Include="mscorlib">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{FFAE3A3D-4EFC-78A7-2D51-E328B591275D}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{F1094126-C6F3-AD8E-42CC-BC53F03AF7FC}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
