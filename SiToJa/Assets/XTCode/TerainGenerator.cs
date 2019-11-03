@@ -45,7 +45,15 @@ public class TerainGenerator : MonoBehaviour {
 
         for (int i = 0; i < wihide; i++) {
             for (int j = 0; j < heigth; j++) {
-                heigts[i, j] = CalculateHeigth(i, j); //Perlinnoide
+                var k = CalculateHeigth(i, j);
+                heigts[i, j] = k; //Perlinnoide
+                if (SpawnObjets) {
+                    //if (Math.Abs((Mathf.PerlinNoise(xCoord / scala, yCoord / scala) * scala / 2) / zCoord) < TOLERANCE_SPAWN) {
+                    //    SpawnUnit(x, y, zCoord);
+                    //}
+                    if (rd.NextDouble() > 0.999)
+                        SpawnUnit(i, k, j);
+                }
             }
         }
 
@@ -59,24 +67,21 @@ public class TerainGenerator : MonoBehaviour {
         float zCoord = Mathf.PerlinNoise(xCoord, yCoord);
 
 
-        if (SpawnObjets) {
-            if (Math.Abs((Mathf.PerlinNoise(xCoord / scala, yCoord / scala) * scala / 2) / zCoord) < TOLERANCE_SPAWN) {
-                SpawnUnit(x, y, zCoord);
-            }
-        }
-
         return zCoord;
     }
 
-    private void SpawnUnit(int x, int y, float z) {
+    private void SpawnUnit(int x, float y, int z) {
         var o = rd.Next(0, GameObjectsToSpawn.Count);
         var go = Instantiate(GameObjectsToSpawn[o], this.transform, true);
-        go.transform.position = new Vector3(x, y - 1, z);
+
+        var t = this.transform.position;
+
+        go.transform.position = new Vector3(x + t.x, y, z + t.z);
     }
 
 
     // Update is called once per frame
     void Update() {
-        GenTeraun();
+        //GenTeraun();
     }
 }
