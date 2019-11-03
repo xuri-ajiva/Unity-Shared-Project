@@ -59,11 +59,14 @@
      <Compile Include="Assets\script\Bewegung.cs" />
      <Compile Include="Assets\script\Mouselook.cs" />
      <Compile Include="Assets\script\Test.cs" />
-     <Compile Include="Assets\TerainGenerator.cs" />
      <Compile Include="Assets\XTCode\PlayerConectionScript.cs" />
+     <Compile Include="Assets\XTCode\TerainGenerator.cs" />
      <Compile Include="Assets\XTCode\XConst.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.multiplayer-hlapi.Editor">
+ <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -80,23 +83,20 @@
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="com.unity.multiplayer-weaver.Editor">
+ <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
- <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
- </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
  <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>/home/private/Work/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/home/private/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
