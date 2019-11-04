@@ -1,34 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using Random = System.Random;
 
 namespace XTCode {
-    public class TerainGenerator : MonoBehaviour {
+    public class TerainGenerator : NetworkBehaviour {
         private Noise _noise = new Noise();
 
         public int depth = 20;
 
         public float scala = 2F;
 
-        public        List<GameObject> GameObjectsToSpawn;
+        public        List<ObjectDATA> GameObjectsToSpawn;
         public        bool             SpawnObjets;
-        private const double           TOLERANCE_SPAWN = 1F;
+        private const double           TOLERANCE_SPAWN = .1F;
 
         public GameObject TerainRoot;
 
-        public const int        CHUNK_SIZE   = 129;
-        public       int        depthDevider = 4;
-        public       GameObject Example;
+        public int dafaultY;
+
+        public enum CHUNK_SIZE_PREV {
+            A33,
+            A65,
+            A129,
+            A513,
+            A1025
+        }
+
+        [Serializable]
+        public struct ObjectDATA {
+            public GameObject gameObject;
+            public Vector3    offset;
+        }
+
+        public        CHUNK_SIZE_PREV ChunkSize;
+        public static int             CHUNK_SIZE   = 129;
+        public        int             depthDevider = 4;
+
+        public GameObject Example;
 
 
-        public bool             trackObjects;
-        public List<GameObject> GameObjectsToTrack = new List<GameObject>();
+        public                  bool             trackObjects;
+        [SyncVar] public static List<GameObject> GameObjectsToTrack = new List<GameObject>();
 
-        public bool[,] TerainMap = new Boolean[CHUNK_SIZE, CHUNK_SIZE];
+        public const int     CHUNK_GRID_SIZE = 128;
+        public       bool[,] TerainMap       = new bool[CHUNK_GRID_SIZE, CHUNK_GRID_SIZE];
 
         private       int delay             = 0;
-        private const int TERRAIN_GEN_RANGE = 2;
+        private const int TERRAIN_GEN_RANGE = 4;
 
 
         //Terrain Get(int x, int y) { return this.TerainMap[(int) ( x + ( CHUNK_SIZE / 2 ) ), (int) ( y + ( CHUNK_SIZE / 2 ) )]; }
@@ -40,11 +60,13 @@ namespace XTCode {
 
         // Start is called before the first frame update
         private void Start() {
-            for ( int i = 0; i < CHUNK_SIZE; i++ ) {
-                for ( int j = 0; j < CHUNK_SIZE; j++ ) {
+            for ( int i = 0; i < CHUNK_GRID_SIZE; i++ ) {
+                for ( int j = 0; j < CHUNK_GRID_SIZE; j++ ) {
                     this.TerainMap[i, j] = false;
                 }
             }
+
+            CHUNK_SIZE = int.Parse( this.ChunkSize.ToString().Substring( 1 ) );
 
             GenTeraun();
         }
@@ -66,7 +88,7 @@ namespace XTCode {
                 for ( int j = 0; j < CHUNK_SIZE; j++ ) {
                     var k = CalculateHeigth( i, j, chunkX, chunkY ); //Perlinnoide
                     heigts[j, i] = k;
-                    SpawnUnit( i, k, j );
+                    SpawnUnit( i + ( CHUNK_SIZE * chunkX ), k * ( CHUNK_SIZE / this.depthDevider ) +dafaultY, j + ( CHUNK_SIZE * chunkY ) );
                 }
             }
 
@@ -85,15 +107,13 @@ namespace XTCode {
 
         private void SpawnUnit(int x, float y, int z) {
             if ( this.SpawnObjets ) {
-                if ( Math.Abs( ( Mathf.PerlinNoise( x / this.scala, y / this.scala ) * this.scala / 2 ) - z ) <= TOLERANCE_SPAWN ) {
-                    Debug.Log( "1" );
+                //if ( Math.Abs( ( Mathf.PerlinNoise( x / this.scala, y / this.scala ) * this.scala / 2 ) - z ) <= TOLERANCE_SPAWN ) {
 
+                if ( this.rd.NextDouble() > 0.999F ) {
                     var o  = this.rd.Next( 0, this.GameObjectsToSpawn.Count );
-                    var go = Instantiate( this.GameObjectsToSpawn[o], this.transform, true );
+                    var go = Instantiate( this.GameObjectsToSpawn[o].gameObject, this.transform, true );
 
-                    var t = this.transform.position;
-
-                    go.transform.position = new Vector3( x + t.x, y, z + t.z );
+                    go.transform.position = new Vector3( x, y, z ) + this.GameObjectsToSpawn[o].offset;
                 }
             }
         }
@@ -103,7 +123,7 @@ namespace XTCode {
             this.delay++;
             if ( this.delay <= CHUNK_SIZE ) return;
 
-            foreach ( var o in this.GameObjectsToTrack ) {
+            foreach ( var o in GameObjectsToTrack ) {
                 var pos = o.transform.position / CHUNK_SIZE;
 
                 int xChunk = (int) pos.x;
@@ -122,10 +142,10 @@ namespace XTCode {
 
         private bool terrainAvailable(int posX, int posY) {
             Debug.Log( posX + " - "    + posY );
-            return this.TerainMap[posX + ( CHUNK_SIZE / 2 ), posY + ( CHUNK_SIZE / 2 )];
+            return this.TerainMap[posX + ( CHUNK_GRID_SIZE / 2 ), posY + ( CHUNK_GRID_SIZE / 2 )];
         }
 
-        private void SetTerrainAvailable(int posX, int posY) { this.TerainMap[posX + ( CHUNK_SIZE / 2 ), posY + ( CHUNK_SIZE / 2 )] = true; }
+        private void SetTerrainAvailable(int posX, int posY) { this.TerainMap[posX + ( CHUNK_GRID_SIZE / 2 ), posY + ( CHUNK_GRID_SIZE / 2 )] = true; }
 
         private void requestTerrain(int chunkX, int chunkY) {
             if ( terrainAvailable( chunkX, chunkY ) ) return;
@@ -141,8 +161,9 @@ namespace XTCode {
             //tData.SetHeights( 0, 0, Noise.GenerateNoiseMap( CHUNK_SIZE+1, CHUNK_SIZE+1, 1, this.scala, new Vector2( CHUNK_SIZE * chunkX, CHUNK_SIZE * chunkY ) ) );
             tColider.terrainData  = tData;
             tBase.terrainData     = tData;
-            go.transform.position = new Vector3( CHUNK_SIZE * chunkX, 0, CHUNK_SIZE * chunkY );
+            go.transform.position = new Vector3( CHUNK_SIZE * chunkX, dafaultY, CHUNK_SIZE * chunkY );
             go.name               = chunkX + ", " + chunkY;
+            go.layer              = 8;
             SetTerrainAvailable( chunkX, chunkY );
         }
     }
