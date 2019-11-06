@@ -14,7 +14,7 @@ namespace XTCode {
         public CHUNK_SIZE_PREV ChunkSize;
         public float           scala = 2F;
 
-        public int depthDivider = 4;
+        public float depthDivider = 4;
         public int defaultsY;
 
         public int seed;
@@ -89,7 +89,8 @@ namespace XTCode {
             S65,
             S129,
             S513,
-            S1025
+            S1025,
+            S2049
         }
 
         #endregion

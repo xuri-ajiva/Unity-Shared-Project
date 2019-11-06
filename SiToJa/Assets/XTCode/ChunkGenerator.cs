@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
@@ -11,8 +13,8 @@ namespace XTCode {
         private static int   _chunkSize;
         private static float _scale;
 
-        private static int _depthDivider;
-        private static int _defaultsY;
+        private static float _depthDivider;
+        private static int   _defaultsY;
 
         private static GameObject _example;
 
@@ -36,7 +38,7 @@ namespace XTCode {
             this._seed               = seed;
         }
 
-        public static void Init(int chunkSize, float scale, int depthDivider, int defaultsY, GameObject example) {
+        public static void Init(int chunkSize, float scale, float depthDivider, int defaultsY, GameObject example) {
             _chunkSize    = chunkSize;
             _scale        = scale;
             _depthDivider = depthDivider;
@@ -64,10 +66,9 @@ namespace XTCode {
         }
 
         private float[,] GenerateHeights(int chunkX, int chunkY) {
-            System.Random rd = null;
-            if ( this._spawnObjects ) {
-                rd = new System.Random( int.Parse( "" + chunkX + this._seed + chunkY ) );
-            }
+            var           lSeed = int.Parse( "" + chunkX + this._seed + ( 100 + chunkY ) );
+            System.Random rd    = new System.Random( lSeed );
+            Debug.Log( lSeed );
 
             var heights = new float[_chunkSize, _chunkSize];
             int baseX   = ( _chunkSize * chunkX );
@@ -77,7 +78,7 @@ namespace XTCode {
                 for ( int j = 0; j < _chunkSize; j++ ) {
                     float k = CalculateHeigth( i, j, chunkX, chunkY ); //Perlinnoide
                     heights[j, i] = k;
-                    if ( this._spawnObjects ) SpawnUnit( i + baseX, k * ( _chunkSize / _depthDivider ) + _defaultsY, j + baseY, rd );
+                    if ( this._spawnObjects ) SpawnUnit( i + baseX, k * ( _chunkSize / _depthDivider ) + _defaultsY, j + baseY, chunkX, chunkY, rd );
                 }
             }
 
@@ -85,29 +86,32 @@ namespace XTCode {
         }
 
         private static float CalculateHeigth(int absX, int absY, int chunkX, int chunkY) {
-            float _const = .5F / _chunkSize;
+            float _const = 1F / _chunkSize;
 
             float xPos = (float) absX / _chunkSize;
             float yPos = (float) absY / _chunkSize;
 
-            //if ( absX == 0 ) xPos          -= _const;
-            //if ( absX == _chunkSize ) xPos += _const;
-//
-            //if ( absY == 0 ) yPos          -= _const;
-            //if ( absY == _chunkSize ) yPos += _const;
+            if ( absX == 0 ) xPos          -= _const;
+            if ( absX == _chunkSize ) xPos += _const;
+
+            if ( absY == 0 ) yPos          -= _const;
+            if ( absY == _chunkSize ) yPos += _const;
 
             return Mathf.PerlinNoise( ( xPos + chunkX ) * _scale, ( yPos + chunkY ) * _scale );
         }
 
-        private void SpawnUnit(int x, float y, int z, System.Random rd) {
-            //if ( Math.Abs( ( Mathf.PerlinNoise( x / this.scala, y / this.scala ) * this.scala / 2 ) - z ) <= TOLERANCE_SPAWN ) {
+        private void SpawnUnit(int x, float y, int z, int chunkX, int chunkY, System.Random rd) {
+            //TODO: Fix this! Generate Forrest and not everywhere Trees !
+            if ( Mathf.PerlinNoise( x , z  ) > .4F ) {
+                if ( !( rd.NextDouble() > 0.998F ) ) return;
 
-            if ( !( rd.NextDouble() > 0.999F ) ) return;
+                int o = rd.Next( 0, this._gameObjectsToSpawn.Count );
 
-            int o  = rd.Next( 0, this._gameObjectsToSpawn.Count );
-            var go = Instantiate( this._gameObjectsToSpawn[o].gameObject, this.transform, true );
+                Debug.Log( this._gameObjectsToSpawn[o].ToString() );
+                var go = Instantiate( this._gameObjectsToSpawn[o].gameObject, this._terrainRoot.transform, false );
 
-            go.transform.position = new Vector3( x, y, z ) + this._gameObjectsToSpawn[o].offset;
+                go.transform.position = new Vector3( x, y, z ) + this._gameObjectsToSpawn[o].offset;
+            }
         }
 
         #region Memory
@@ -134,6 +138,13 @@ namespace XTCode {
         public struct ObjectDATA {
             public GameObject gameObject;
             public Vector3    offset;
+
+            #region Overrides of ValueType
+
+            /// <inheritdoc />
+            public override string ToString() => this.gameObject.name + ": " + this.gameObject + " | " + this.offset;
+
+            #endregion
         }
 
         #endregion
@@ -148,7 +159,7 @@ namespace XTCode {
             [DebuggerStepThrough] get => _scale;
         }
 
-        public static int DepthDivider {
+        public static float DepthDivider {
             [DebuggerStepThrough] get => _depthDivider;
         }
 
