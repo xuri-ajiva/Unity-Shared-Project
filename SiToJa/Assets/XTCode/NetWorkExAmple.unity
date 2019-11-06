@@ -234,18 +234,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83345438dc92a4d258e2a2a8d418d54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 72
-  scala: 2.93
-  GameObjectsToSpawn:
-  - gameObject: {fileID: 0}
-    offset: {x: 0, y: 0, z: 0}
-  SpawnObjets: 1
-  TerainRoot: {fileID: 0}
-  dafaultY: 0
   ChunkSize: 0
-  depthDevider: 4
+  scala: 2.93
+  depthDivider: 4
+  defaultsY: 0
+  seed: 0
   Example: {fileID: 0}
+  TerainRoot: {fileID: 0}
   trackObjects: 0
+  gameObjectsToTrack: []
+  trackRange: 0
+  spawnObjets: 0
+  gameObjectsToSpawn: []
 --- !u!154 &197938168
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -584,19 +584,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83345438dc92a4d258e2a2a8d418d54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 20
-  scala: 2
-  GameObjectsToSpawn:
+  ChunkSize: 3
+  scala: 2.37
+  depthDivider: 2
+  defaultsY: -168
+  seed: 0
+  Example: {fileID: 7694099855185296506, guid: bd0428693be8f0f8a9b4c5fb656ef37c, type: 3}
+  TerainRoot: {fileID: 1344158357}
+  trackObjects: 1
+  gameObjectsToTrack:
+  - {fileID: 314424330}
+  trackRange: 1
+  spawnObjets: 0
+  gameObjectsToSpawn:
   - gameObject: {fileID: -927199367670048503, guid: 7c3af364775d648a89aa584b0e39bacc,
       type: 3}
     offset: {x: 0, y: 4, z: 0}
-  SpawnObjets: 0
-  TerainRoot: {fileID: 1344158357}
-  dafaultY: -100
-  ChunkSize: 2
-  depthDevider: 4
-  Example: {fileID: 7694099855185296506, guid: bd0428693be8f0f8a9b4c5fb656ef37c, type: 3}
-  trackObjects: 1
+  - gameObject: {fileID: 7804304004733542460, guid: 6346dc43bf7a3765d9e63df7d8275b4d,
+      type: 3}
+    offset: {x: 0, y: 2, z: 0}
 --- !u!4 &1344158359
 Transform:
   m_ObjectHideFlags: 0
