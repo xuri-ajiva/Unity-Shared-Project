@@ -1,0 +1,9 @@
+
+
+
+octave  for details 
+höhere oktave weniger einfluss mehr deteils
+
+
+amplitude = höhe des ausschlage
+freqency = anzehl der ausschläge ~

@@ -1,87 +1,98 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.Serialization;
 using Random = System.Random;
 
-public class TerainGenerator : MonoBehaviour {
-    public int depth = 20;
+namespace XTCode {
+    public class TerainGenerator : NetworkBehaviour {
+        [HideInInspector] private ChunkGenerator _chunkGenerator;
 
-    public int wihide = 512;
-    public int heigth = 512;
+        public CHUNK_SIZE_PREV ChunkSize;
+        public float           scala = 2F;
 
-    public float scala = 2F;
+        public float depthDivider = 4;
+        public int defaultsY;
 
+        public int seed;
 
-    public Vector2 Offest = new Vector2(0, 0);
-
-
-    public List<GameObject> GameObjectsToSpawn;
-    public bool SpawnObjets;
-    private const double TOLERANCE_SPAWN = 1F;
+        public GameObject Example;
+        public GameObject TerainRoot;
 
 
-    private Random rd = new Random();
+        public                 bool             trackObjects;
+        public                 List<GameObject> gameObjectsToTrack = new List<GameObject>();
+        [Range( 1, 8 )] public int              trackRange;
 
-    // Start is called before the first frame update
-    void Start() {
-        GenTeraun();
-    }
 
-    private void GenTeraun() {
-        Terrain t = GetComponent<Terrain>();
-        t.terrainData = GenerateTerrain(t.terrainData);
-    }
+        public bool                            spawnObjets;
+        public List<ChunkGenerator.ObjectDATA> gameObjectsToSpawn;
 
-    private TerrainData GenerateTerrain(TerrainData terrainData) {
-        terrainData.size = new Vector3(wihide, depth, heigth);
-        terrainData.SetHeights(0, 0, GenerateHeights());
 
-        return terrainData;
-    }
+        private int delay                 = 0;
+        static  int UPDATE_TICKS_TO_CHECK = 128;
 
-    private float[,] GenerateHeights() {
-        float[,] heigts = new float[wihide, heigth];
 
-        for (int i = 0; i < wihide; i++) {
-            for (int j = 0; j < heigth; j++) {
-                var k = CalculateHeigth(i, j);
-                heigts[i, j] = k; //Perlinnoide
-                if (SpawnObjets) {
-                    //if (Math.Abs((Mathf.PerlinNoise(xCoord / scala, yCoord / scala) * scala / 2) / zCoord) < TOLERANCE_SPAWN) {
-                    //    SpawnUnit(x, y, zCoord);
-                    //}
-                    if (rd.NextDouble() > 0.999)
-                        SpawnUnit(i, k, j);
+        [SyncVar] public static List<GameObject> GameObjectsToTrack = new List<GameObject>();
+
+        // Start is called before the first frame update
+        private void Start() {
+            int CHUNK_SIZE = int.Parse( this.ChunkSize.ToString().Substring( 1 ) );
+            GameObjectsToTrack.AddRange( this.gameObjectsToTrack );
+
+            ChunkGenerator.Init( CHUNK_SIZE, this.scala, this.depthDivider, this.defaultsY, this.Example );
+
+            this._chunkGenerator = new ChunkGenerator( this.TerainRoot, this.spawnObjets, ref this.gameObjectsToSpawn, this.seed );
+
+            GenTeraun();
+        }
+
+        private void GenTeraun() {
+            for ( int i = 0; i < 4; i++ ) {
+                for ( int j = 0; j < 4; j++ ) {
+                    _chunkGenerator.requestTerrain( 2 - i, 2 - j );
                 }
             }
         }
 
-        return heigts;
-    }
 
-    private float CalculateHeigth(int x, int y) {
-        float xCoord = (float) x / wihide * scala + Offest.x;
-        float yCoord = (float) y / heigth * scala + Offest.y;
+        private void Update() {
+            if ( !this.trackObjects ) return;
+            this.delay++;
+            if ( this.delay <= UPDATE_TICKS_TO_CHECK ) return;
 
-        float zCoord = Mathf.PerlinNoise(xCoord, yCoord);
+            foreach ( var o in GameObjectsToTrack ) {
+                var pos = o.transform.position / ChunkGenerator.ChunkSize;
+
+                int xChunk = (int) pos.x;
+                int zChunk = (int) pos.z;
+
+                for ( int x = -this.trackRange; x < this.trackRange; x++ ) {
+                    for ( int z = -this.trackRange; z < this.trackRange; z++ ) {
+                        if ( !this._chunkGenerator.GetTerrainAvailable( xChunk + x, zChunk + z ) ) {
+                            this._chunkGenerator.requestTerrain( xChunk + x, zChunk + z );
+                            Debug.Log( $"Requested: [{xChunk + x},{zChunk + z}]" );
+                        }
+                    }
+                }
+            }
+        }
 
 
-        return zCoord;
-    }
+        #region Structs
 
-    private void SpawnUnit(int x, float y, int z) {
-        var o = rd.Next(0, GameObjectsToSpawn.Count);
-        var go = Instantiate(GameObjectsToSpawn[o], this.transform, true);
+        public enum CHUNK_SIZE_PREV {
+            S33,
+            S65,
+            S129,
+            S513,
+            S1025,
+            S2049
+        }
 
-        var t = this.transform.position;
-
-        go.transform.position = new Vector3(x + t.x, y, z + t.z);
-    }
-
-
-    // Update is called once per frame
-    void Update() {
-        //GenTeraun();
+        #endregion
     }
 }

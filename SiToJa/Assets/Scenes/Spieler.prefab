@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 980333430572915494}
   - component: {fileID: 980333430572915492}
   - component: {fileID: 5122967180463138304}
+  - component: {fileID: 5795124349480893734}
   m_Layer: 0
   m_Name: Spieler
   m_TagString: Untagged
@@ -49,7 +50,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3.8
   m_Radius: 0.6
-  m_SlopeLimit: 45
+  m_SlopeLimit: 48.1
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -67,14 +68,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 980333430572915494}
-  speed: 12
-  gravity: -9.81
-  jumpHeight: 4
+  speed: 121.4
+  gravity: -19.62
+  jumpHeight: 62.2
   groundCheck: {fileID: 980333431947571965}
-  groundDistance: 0.4
+  groundDistance: 2.66
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &5122967180463138304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +109,19 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &5795124349480893734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980333430572915489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 431429f4a2f1435c987fb69fea1e2923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCam: {fileID: 980333431650829241}
 --- !u!1 &980333431103922668
 GameObject:
   m_ObjectHideFlags: 0

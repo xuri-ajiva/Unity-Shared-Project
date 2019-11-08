@@ -46,3 +46,4 @@ sysinfo.txt
 # custon
 *Assembly-CSharp.csproj
 *.csproj
+*.sln
