@@ -15,7 +15,7 @@ namespace XTCode.Terrain {
 
 
         [Range( 0, 6 )] public int levelOfDetail;
-        private const int MAP_CHUNK_SIZE = 241;
+        public const int MAP_CHUNK_SIZE = 241;
 
         public float noiseScale;
 
