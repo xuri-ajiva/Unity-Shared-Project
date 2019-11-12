@@ -10,7 +10,8 @@ namespace XTCode.Terrain {
         public enum DrawMode {
             NoiseMap,
             ColorMap,
-            Mesh
+            Mesh,
+            FalloffMap
         }
 
         public DrawMode drawMode;
@@ -29,6 +30,9 @@ namespace XTCode.Terrain {
 
         public int seed;
         public Vector2 offset;
+
+        public bool useFalloffMap;
+
         public float meshHeightMultiplier;
         public AnimationCurve meshHeightCurve;
 
@@ -37,9 +41,14 @@ namespace XTCode.Terrain {
 
         public TerrainType[] regions;
 
+        public float[,] falloffMap;
 
         Queue<MapThreadInfo<MapData>> mapDataThreadInfoQueue = new Queue<MapThreadInfo<MapData>>();
         Queue<MapThreadInfo<MeshData>> meshDataThreadInfoQueue = new Queue<MapThreadInfo<MeshData>>();
+
+        private void Awake() {
+            falloffMap = FalloffGenerator.GenerateFalloffMap(MAP_CHUNK_SIZE);
+        }
 
         public void DrawMapInEditor() {
             var mapData = GenerateMapData(Vector2.zero);
@@ -54,6 +63,9 @@ namespace XTCode.Terrain {
                     break;
                 case DrawMode.Mesh:
                     display.DrawMesh(MeshGenerrator.GenerateTerrainMesh(mapData.heightMap, this.meshHeightMultiplier, this.meshHeightCurve, editorPreviewLOD), TextureGenerator.TextureFromColourMap(mapData.colorMap, MAP_CHUNK_SIZE, MAP_CHUNK_SIZE));
+                    break;
+                case DrawMode.FalloffMap:
+                    display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(MAP_CHUNK_SIZE)));
                     break;
             }
         }
@@ -112,6 +124,9 @@ namespace XTCode.Terrain {
             var colorMap = new Color[MAP_CHUNK_SIZE * MAP_CHUNK_SIZE];
             for (int y = 0; y < MAP_CHUNK_SIZE; y++) {
                 for (int x = 0; x < MAP_CHUNK_SIZE; x++) {
+                    if (useFalloffMap) {
+                        noiseMap[x, y] = Mathf.Clamp01(noiseMap[x, y] - falloffMap[x, y]);
+                    }
                     float currentHeight = noiseMap[x, y];
                     for (int i = 0; i < this.regions.Length; i++) {
                         if (currentHeight >= this.regions[i].Height) {
@@ -129,6 +144,8 @@ namespace XTCode.Terrain {
         private void OnValidate() {
             if (this.lacunarity < 1) this.lacunarity = 1;
             if (this.octave < 0) this.octave = 0;
+
+            falloffMap = FalloffGenerator.GenerateFalloffMap(MAP_CHUNK_SIZE);
         }
 
 

@@ -72,7 +72,7 @@ namespace XTCode.Terrain {
                     if (normalizeMode == NormalizeMode.Local)
                         noise[x, y] = Mathf.InverseLerp(minLocalNoiseHeight, maxLocalNoiseHeight, noise[x, y]);
                     else {
-                        float normalizedHeight = (noise [x,y] + 1) / (2F * (maxPossibleHeight / 1.75F));
+                        float normalizedHeight = (noise [x,y] + 1) / (2F * (maxPossibleHeight / 1F));
                         noise[x, y] = Mathf.Clamp(normalizedHeight, 0, int.MaxValue);
                     }
                 }
