@@ -4,8 +4,9 @@ using System.Diagnostics;
 using UnityEngine;
 
 namespace XTCode.Terrain {
-    public static class MashGenerrator {
-        public static MeshDate GenerateTerrainMesh(float[,] heights, float heightMultiplier, AnimationCurve heightCurve, int levelOfDetail) {
+    public static class MeshGenerrator {
+        public static MeshData GenerateTerrainMesh(float[,] heights, float heightMultiplier, AnimationCurve _heightCurve, int levelOfDetail) {
+            AnimationCurve heightCurve = new AnimationCurve(_heightCurve.keys);
             int   width    = heights.GetLength( 0 );
             int   height   = heights.GetLength( 1 );
             float topLeftX = ( width  - 1 ) / -2F;
@@ -15,7 +16,7 @@ namespace XTCode.Terrain {
 
             int verticesPerLine = ( width - 1 ) / meshSimplificationIncrement + 1;
 
-            var meshDate    = new MeshDate( verticesPerLine, verticesPerLine );
+            var meshDate    = new MeshData( verticesPerLine, verticesPerLine );
             int vertexIndex = 0;
 
             for ( int y = 0; y < height; y += meshSimplificationIncrement ) {
@@ -38,14 +39,14 @@ namespace XTCode.Terrain {
         }
     }
 
-    public class MeshDate {
+    public class MeshData {
         public Vector3[] vertices;
         public int[]     triangles;
         public Vector2[] uvs;
 
         private int triangleIndex;
 
-        public MeshDate(int meshWidth, int meshHeight) {
+        public MeshData(int meshWidth, int meshHeight) {
             this.vertices  = new Vector3[meshWidth                          * meshHeight];
             this.uvs       = new Vector2[meshHeight                         * meshWidth];
             this.triangles = new int[( meshHeight - 1 ) * ( meshWidth - 1 ) * 6];

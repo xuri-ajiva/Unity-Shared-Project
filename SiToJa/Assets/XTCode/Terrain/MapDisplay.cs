@@ -13,7 +13,7 @@ namespace XTCode.Terrain {
             this.meshCollider.sharedMesh = this.meshFilter.sharedMesh;
         }
 
-        public void DrawMesh(MeshDate meshDate, Texture2D texture) {
+        public void DrawMesh(MeshData meshDate, Texture2D texture) {
             this.meshFilter.sharedMesh                   = meshDate.CreateMesh();
             this.meshRenderer.sharedMaterial.mainTexture = texture;
             this.meshCollider.sharedMesh = this.meshFilter.sharedMesh;

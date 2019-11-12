@@ -8,11 +8,11 @@ namespace XTCode.Terrain.Editor {
             MapGenerator mapGen = (MapGenerator) this.target;
 
             if ( DrawDefaultInspector() ) {
-                if ( mapGen.autoUpdate ) mapGen.GenerateMap();
+                if ( mapGen.autoUpdate ) mapGen.DrawMapInEditor();
             }
 
             if ( GUILayout.Button( "Generate" ) ) {
-                mapGen.GenerateMap();
+                mapGen.DrawMapInEditor();
             }
         }
     }

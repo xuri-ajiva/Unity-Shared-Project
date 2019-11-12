@@ -3,39 +3,54 @@ using UnityEngine;
 
 namespace XTCode.Terrain {
     public static class Noise {
-        public static float[,] GenerateNoise(int width, int height, int seed, float scale, int ebene, float auswirkung, float flüchtigkeit, Vector2 offset) {
+
+        public enum NormalizeMode {
+
+            Local, Global
+        }
+
+
+        public static float[,] GenerateNoise(int width, int height, int seed, float scale, int ebene, float auswirkung, float flüchtigkeit, Vector2 offset, NormalizeMode normalizeMode) {
             float[,] noise = new float[width, height];
 
             //psyco random number generator
             System.Random prng         = new System.Random( seed );
+
+            float maxPossibleHeight = 0;
+            float amplitude   = 1;
+            float frequency   = 1;
+
             Vector2[]     ebenenOddset = new Vector2[ebene];
-            for ( int i = 0; i < ebene; i++ ) {
+            for (int i = 0; i < ebene; i++) {
                 //not more for best perlinnoise
-                float offsetNextX = prng.Next( -100000, 100000 );
-                float offsetNextY = prng.Next( -100000, 100000 );
-                ebenenOddset[i] = new Vector2( offsetNextX, offsetNextY ) + offset;
+                float offsetNextX = prng.Next( -100000, 100000 ) + offset.x;
+                float offsetNextY = prng.Next( -100000, 100000 ) - offset.y;
+                ebenenOddset[i] = new Vector2(offsetNextX, offsetNextY);
+
+                maxPossibleHeight += amplitude;
+                amplitude *= auswirkung;
             }
 
-            if ( scale <= 0 ) scale = 0.001F;
+            if (scale <= 0) scale = 0.001F;
 
-            float maxNoiseHeight = float.MinValue;
-            float minNoiseHeight = float.MaxValue;
+            float maxLocalNoiseHeight = float.MinValue;
+            float minLocalNoiseHeight = float.MaxValue;
 
             float hefWidth  = width  / 2F;
             float hefHeight = height / 2F;
 
-            for ( int y = 0; y < height; y++ ) {
-                for ( int x = 0; x < width; x++ ) {
-                    float amplitude   = 1;
-                    float frequency   = 1;
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    amplitude = 1;
+                    frequency = 1;
                     float noiseHeight = 1;
 
-                    for ( int i = 0; i < ebene; i++ ) {
-                        float sampleX = ( x - hefWidth )  / scale * frequency + ebenenOddset[i].x;
-                        float sampleY = ( y - hefHeight ) / scale * frequency + ebenenOddset[i].y;
+                    for (int i = 0; i < ebene; i++) {
+                        float sampleX = ( x - hefWidth+ ebenenOddset[i].x )  / scale * frequency ;
+                        float sampleY = ( y - hefHeight + ebenenOddset[i].y) / scale * frequency ;
 
                         //negative values
-                        float sampleZ = Mathf.PerlinNoise( sampleX, sampleY ) * 2 - 1;
+                        float sampleZ = (Mathf.PerlinNoise( sampleX, sampleY ) * 2) - 1;
 
                         noiseHeight += sampleZ * amplitude;
 
@@ -43,18 +58,23 @@ namespace XTCode.Terrain {
                         frequency *= flüchtigkeit;
                     }
 
-                    if ( noiseHeight > maxNoiseHeight )
-                        maxNoiseHeight                                      = noiseHeight;
-                    else if ( noiseHeight < minNoiseHeight ) minNoiseHeight = noiseHeight;
+                    if (noiseHeight > maxLocalNoiseHeight)
+                        maxLocalNoiseHeight = noiseHeight;
+                    else if (noiseHeight < minLocalNoiseHeight) minLocalNoiseHeight = noiseHeight;
 
                     noise[x, y] = noiseHeight;
                 }
             }
 
             //normalize
-            for ( int y = 0; y < height; y++ ) {
-                for ( int x = 0; x < width; x++ ) {
-                    noise[x, y] = Mathf.InverseLerp( minNoiseHeight, maxNoiseHeight, noise[x, y] );
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    if (normalizeMode == NormalizeMode.Local)
+                        noise[x, y] = Mathf.InverseLerp(minLocalNoiseHeight, maxLocalNoiseHeight, noise[x, y]);
+                    else {
+                        float normalizedHeight = (noise [x,y] + 1) / (2F * (maxPossibleHeight / 1.75F));
+                        noise[x, y] = Mathf.Clamp(normalizedHeight, 0, int.MaxValue);
+                    }
                 }
             }
 
