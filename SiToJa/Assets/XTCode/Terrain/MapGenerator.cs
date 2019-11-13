@@ -19,7 +19,7 @@ namespace XTCode.Terrain {
         public Noise.NormalizeMode normalizeMode;
 
         [Range(0, 6)] public int editorPreviewLOD;
-        public const int MAP_CHUNK_SIZE = 241;
+        public const int MAP_CHUNK_SIZE = 239;
 
         public float noiseScale;
 
@@ -119,7 +119,7 @@ namespace XTCode.Terrain {
         }
 
         MapData GenerateMapData(Vector2 center) {
-            var noiseMap = Noise.GenerateNoise(MAP_CHUNK_SIZE, MAP_CHUNK_SIZE, this.seed, this.noiseScale, this.octave, this.persistance, this.lacunarity, center + offset,normalizeMode);
+            var noiseMap = Noise.GenerateNoise(MAP_CHUNK_SIZE +2, MAP_CHUNK_SIZE+2, this.seed, this.noiseScale, this.octave, this.persistance, this.lacunarity, center + offset,normalizeMode);
 
             var colorMap = new Color[MAP_CHUNK_SIZE * MAP_CHUNK_SIZE];
             for (int y = 0; y < MAP_CHUNK_SIZE; y++) {

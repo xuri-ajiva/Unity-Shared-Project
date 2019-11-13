@@ -2,38 +2,6 @@ using UnityEngine;
 
 namespace XTCode {
     public class Noise {
-        public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, Vector2 offset) {
-            float[,] noiseMap = new float[mapWidth, mapHeight];
-
-            System.Random prng = new System.Random( seed );
-
-            // no scale of 0 because *
-            if ( scale <= 0 ) {
-                scale = 0.0001f;
-            }
-
-            //init variables
-            float maxNoiseHeight = float.MinValue;
-            float minNoiseHeight = float.MaxValue;
-
-            float halfWidth  = mapWidth  / 2f;
-            float halfHeight = mapHeight / 2f;
-
-            var baseX = offset.x;
-            var baseY = offset.y;
-
-            for ( int i = 0; i < mapWidth; i++ ) {
-                for ( int j = 0; j < mapHeight; j++ ) {
-                    float xPos =  (float)(baseX + i) / mapWidth  * scale;
-                    float yPos =  (float)(baseY + j) / mapHeight * scale;
-                    var   k    = Mathf.PerlinNoise( xPos, yPos );
-                    noiseMap[i, j] = k;
-                }
-            }
-
-            return noiseMap;
-        }
-
         public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset) {
             float[,] noiseMap = new float[mapWidth, mapHeight];
 
