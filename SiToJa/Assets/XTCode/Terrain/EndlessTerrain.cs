@@ -73,7 +73,7 @@ namespace XTCode.Terrain {
                     if (terrainChunkDictionary.ContainsKey(viewedChunkCoord)) {
                         terrainChunkDictionary[viewedChunkCoord].UpdateTerrainChunk();
                     } else {
-                        terrainChunkDictionary.Add(viewedChunkCoord, new TerrainChunk(viewedChunkCoord,zOffset, meshObkectLayer, useColider, chunkSize, deteilLevels, transform, mapMaterial)); ;
+                        terrainChunkDictionary.Add(viewedChunkCoord, new TerrainChunk(viewedChunkCoord, zOffset, meshObkectLayer, useColider, chunkSize, deteilLevels, transform, mapMaterial)); ;
                     }
 
                 }
@@ -92,12 +92,13 @@ namespace XTCode.Terrain {
 
             LODInfo[] deteilLevels;
             LODMesh[] lodMeshes;
+            LODMesh colisionLODMesh;
 
             MapData mapData;
             bool mapDataRecieved;
             int previousLODIndex = -1;
 
-            public TerrainChunk(Vector2 coord,int zOffset,int meshObkectLayer,bool useColider, int size, LODInfo[] deteilLevels, Transform parent, Material material) {
+            public TerrainChunk(Vector2 coord, int zOffset, int meshObkectLayer, bool useColider, int size, LODInfo[] deteilLevels, Transform parent, Material material) {
                 this.deteilLevels = deteilLevels;
 
                 position = coord * size;
@@ -118,7 +119,10 @@ namespace XTCode.Terrain {
 
                 lodMeshes = new LODMesh[deteilLevels.Length];
                 for (int i = 0; i < deteilLevels.Length; i++) {
-                    lodMeshes[i] = new LODMesh(deteilLevels[i].lod, UpdateTerrainChunk,i==0 && useColider);
+                    lodMeshes[i] = new LODMesh(deteilLevels[i].lod, UpdateTerrainChunk/*, i == 0 && useColider*/);
+                    if (deteilLevels[i].useForColider) {
+                        colisionLODMesh = lodMeshes[i];
+                    }
                 }
 
                 mapGenerator.RequestMapDate(position, OnMapDataReceived);
@@ -157,12 +161,21 @@ namespace XTCode.Terrain {
                         if (lodMesh.hasMesh) {
                             previousLODIndex = lodIndex;
                             meshFilter.mesh = lodMesh.mesh;
-                           if(lodMesh.colider) meshCollider.sharedMesh = lodMesh.mesh;
-                           else meshCollider.sharedMesh = null;
+                            //if (lodMesh.colider) meshCollider.sharedMesh = lodMesh.mesh;
+                            //else meshCollider.sharedMesh = null;
                         } else if (!lodMesh.requested) {
                             lodMesh.RequestMesh(mapData);
                         }
                     }
+
+                    if(lodIndex == 0) {
+                        if (colisionLODMesh.hasMesh)
+                            meshCollider.sharedMesh = colisionLODMesh.mesh;
+                        else if (!colisionLODMesh.requested) {
+                            colisionLODMesh.RequestMesh(mapData);
+                        }
+                    }
+
                     terrainChunksVisibleLastUpdate.Add(this);
                 }
 
@@ -183,15 +196,15 @@ namespace XTCode.Terrain {
             public Mesh mesh;
             public bool requested;
             public bool hasMesh;
-            public bool colider;
+            //public bool colider;
 
             int lod;
             System.Action updataCallBack;
 
-            public LODMesh(int lod, System.Action _updateCallBack,bool _colider) {
+            public LODMesh(int lod, System.Action _updateCallBack/*, bool _colider*/) {
                 this.lod = lod;
                 updataCallBack = _updateCallBack;
-                colider = _colider;
+                //colider = _colider;
             }
             void OnMahsDataReceived(MeshData meshData) {
                 mesh = meshData.CreateMesh();
@@ -211,7 +224,7 @@ namespace XTCode.Terrain {
         public struct LODInfo {
             public int lod;
             public float visableDstThreshold;
-
+            public bool useForColider;
         }
     }
 }

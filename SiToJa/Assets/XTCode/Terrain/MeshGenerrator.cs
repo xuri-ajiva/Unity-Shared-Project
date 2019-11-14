@@ -62,8 +62,9 @@ namespace XTCode.Terrain {
                 }
             }
 
-            return meshData;
+            meshData.BekeNormals();
 
+            return meshData;
         }
     }
 
@@ -71,6 +72,7 @@ namespace XTCode.Terrain {
         Vector3[] vertices;
         int[] triangles;
         Vector2[] uvs;
+        Vector3[] bakedNormals;
 
         Vector3[] borderVertices;
         int[] borderTriangles;
@@ -164,12 +166,16 @@ namespace XTCode.Terrain {
             return Vector3.Cross(sideAB, sideAC).normalized;
         }
 
+        public void BekeNormals() {
+            bakedNormals = CalculateNormals();
+        }
+
         public Mesh CreateMesh() {
             Mesh mesh = new Mesh ();
             mesh.vertices = vertices;
             mesh.triangles = triangles;
             mesh.uv = uvs;
-            mesh.normals = CalculateNormals();
+            mesh.normals = bakedNormals;
             return mesh;
         }
     }
