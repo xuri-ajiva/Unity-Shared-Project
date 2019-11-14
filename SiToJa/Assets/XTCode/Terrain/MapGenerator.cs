@@ -19,7 +19,8 @@ namespace XTCode.Terrain {
         public Noise.NormalizeMode normalizeMode;
 
         [Range(0, 6)] public int editorPreviewLOD;
-        public const int MAP_CHUNK_SIZE = 239;
+
+        public bool useFaltShading;
 
         public float noiseScale;
 
@@ -36,10 +37,10 @@ namespace XTCode.Terrain {
         public float meshHeightMultiplier;
         public AnimationCurve meshHeightCurve;
 
-
         public bool autoUpdate;
 
         public TerrainType[] regions;
+        static MapGenerator instance;
 
         public float[,] falloffMap;
 
@@ -48,6 +49,18 @@ namespace XTCode.Terrain {
 
         private void Awake() {
             falloffMap = FalloffGenerator.GenerateFalloffMap(MAP_CHUNK_SIZE);
+        }
+
+        public static int MAP_CHUNK_SIZE {
+            get {
+                if (instance == null) 
+                    instance = FindObjectOfType<MapGenerator>();
+                
+                if (instance.useFaltShading)
+                    return 95;
+                else
+                    return 239;
+            }
         }
 
         public void DrawMapInEditor() {
@@ -62,7 +75,7 @@ namespace XTCode.Terrain {
                     display.DrawTexture(TextureGenerator.TextureFromHeightMap(mapData.heightMap));
                     break;
                 case DrawMode.Mesh:
-                    display.DrawMesh(MeshGenerrator.GenerateTerrainMesh(mapData.heightMap, this.meshHeightMultiplier, this.meshHeightCurve, editorPreviewLOD), TextureGenerator.TextureFromColourMap(mapData.colorMap, MAP_CHUNK_SIZE, MAP_CHUNK_SIZE));
+                    display.DrawMesh(MeshGenerrator.GenerateTerrainMesh(mapData.heightMap, this.meshHeightMultiplier, this.meshHeightCurve, editorPreviewLOD, useFaltShading), TextureGenerator.TextureFromColourMap(mapData.colorMap, MAP_CHUNK_SIZE, MAP_CHUNK_SIZE));
                     break;
                 case DrawMode.FalloffMap:
                     display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(MAP_CHUNK_SIZE)));
@@ -96,7 +109,7 @@ namespace XTCode.Terrain {
         }
 
         void MeshDataThread(MapData mapData, int lod, Action<MeshData> callBack) {
-            var meshData = MeshGenerrator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve, lod);
+            var meshData = MeshGenerrator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve, lod,useFaltShading);
             lock (meshDataThreadInfoQueue) {
                 meshDataThreadInfoQueue.Enqueue(new MapThreadInfo<MeshData>(callBack, meshData));
             }
