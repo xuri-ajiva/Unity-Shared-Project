@@ -8,11 +8,13 @@ public class UpdatableData : ScriptableObject {
     public bool autoUpdata;
 
     public void NotifyOfUpdatadVaules() {
+        UnityEditor.EditorApplication.update -= NotifyOfUpdatadVaules;
         OnVaulesUpdatad?.Invoke();
     }
 
     protected virtual void OnValidate() {
-        if (autoUpdata)
-            NotifyOfUpdatadVaules();
+        if (autoUpdata) {
+            UnityEditor.EditorApplication.update += NotifyOfUpdatadVaules;
+        }
     }
 }

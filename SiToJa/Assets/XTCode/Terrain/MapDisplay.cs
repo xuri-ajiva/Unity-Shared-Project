@@ -5,18 +5,15 @@ namespace XTCode.Terrain {
         public Renderer     textureRender;
         public MeshFilter   meshFilter;
         public MeshRenderer meshRenderer;
-        public MeshCollider meshCollider;
 
         public void DrawTexture(Texture2D texture) {
             this.textureRender.sharedMaterial.mainTexture = texture;
-            this.textureRender.transform.localScale       = new Vector3( texture.width, 1, texture.height );
-            this.meshCollider.sharedMesh = this.meshFilter.sharedMesh;
+            this.textureRender.transform.localScale = new Vector3(texture.width, 1, texture.height);
         }
 
-        public void DrawMesh(MeshData meshDate, Texture2D texture) {
-            this.meshFilter.sharedMesh                   = meshDate.CreateMesh();
-            this.meshRenderer.sharedMaterial.mainTexture = texture;
-            this.meshCollider.sharedMesh = this.meshFilter.sharedMesh;
+        public void DrawMesh(MeshData meshDate) {
+            this.meshFilter.sharedMesh = meshDate.CreateMesh();
+            meshFilter.transform.localScale = Vector3.one * FindObjectOfType<MapGenerator>().terrainData.uniformScale;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace XTCode.Terrain {
             mapGenerator = FindObjectOfType<MapGenerator>();
 
             maxViewDst = deteilLevels[deteilLevels.Length - 1].visableDstThreshold;
-            chunkSize = MapGenerator.MAP_CHUNK_SIZE - 1;
+            chunkSize = mapGenerator.MAP_CHUNK_SIZE - 1;
             chunksVisibleInViewDst = Mathf.RoundToInt(maxViewDst / chunkSize);
 
             UpdateVisibleChunks();
@@ -129,10 +129,6 @@ namespace XTCode.Terrain {
             public void OnMapDataReceived(MapData mapData) {
                 this.mapData = mapData;
                 mapDataRecieved = true;
-
-                Texture2D texture = TextureGenerator.TextureFromColourMap(mapData.colorMap, MapGenerator.MAP_CHUNK_SIZE, MapGenerator.MAP_CHUNK_SIZE);
-                meshRenderer.material.mainTexture = texture;
-
 
                 UpdateTerrainChunk();
             }

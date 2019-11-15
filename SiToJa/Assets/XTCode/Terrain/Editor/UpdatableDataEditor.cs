@@ -12,6 +12,7 @@ public class UpdatableDataEditor : Editor
         UpdatableData dada = ( UpdatableData) target;
         if (GUILayout.Button("Updata")) {
             dada.NotifyOfUpdatadVaules();
+            EditorUtility.SetDirty(target);
         }
     }
 
