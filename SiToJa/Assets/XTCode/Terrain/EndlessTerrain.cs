@@ -7,9 +7,7 @@ namespace XTCode.Terrain {
     public class EndlessTerrain : MonoBehaviour {
         const float viewerMoveThresholdBeforUpdate = 25F;
         const float sqrviewerMoveThresholdBeforUpdate = viewerMoveThresholdBeforUpdate * viewerMoveThresholdBeforUpdate;
-
-        const float scale = 5;
-
+        
         public LODInfo[] deteilLevels;
         public static float maxViewDst;
 
@@ -49,7 +47,7 @@ namespace XTCode.Terrain {
         void Update() {
             //if (viewer == null) return;
 
-            viewerPosition = new Vector2(viewer.position.x, viewer.position.z) / scale;
+            viewerPosition = new Vector2(viewer.position.x, viewer.position.z) / mapGenerator.terrainData.uniformScale;
             if ((viewerPositionOld - viewerPosition).sqrMagnitude > sqrviewerMoveThresholdBeforUpdate) {
                 viewerPositionOld = viewerPosition;
                 UpdateVisibleChunks();
@@ -111,9 +109,9 @@ namespace XTCode.Terrain {
                 meshCollider = meshObject.AddComponent<MeshCollider>();
                 meshRenderer.material = material;
 
-                meshObject.transform.position = positionV3 * scale;
+                meshObject.transform.position = positionV3 * mapGenerator.terrainData.uniformScale;
                 meshObject.transform.parent = parent;
-                meshObject.transform.localScale = Vector3.one * scale;
+                meshObject.transform.localScale = Vector3.one * mapGenerator.terrainData.uniformScale;
                 meshObject.layer = meshObkectLayer;
                 SetVisible(false);
 

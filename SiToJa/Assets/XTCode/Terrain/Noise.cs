@@ -4,10 +4,7 @@ using UnityEngine;
 namespace XTCode.Terrain {
     public static class Noise {
 
-        public enum NormalizeMode {
-
-            Local, Global
-        }
+        public enum NormalizeMode { Local, Global }
 
 
         public static float[,] GenerateNoise(int width, int height, int seed, float scale, int ebene, float auswirkung, float flüchtigkeit, Vector2 offset, NormalizeMode normalizeMode) {
