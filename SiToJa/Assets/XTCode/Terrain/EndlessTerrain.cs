@@ -7,7 +7,7 @@ namespace XTCode.Terrain {
     public class EndlessTerrain : MonoBehaviour {
         const float viewerMoveThresholdBeforUpdate = 25F;
         const float sqrviewerMoveThresholdBeforUpdate = viewerMoveThresholdBeforUpdate * viewerMoveThresholdBeforUpdate;
-        
+
         public LODInfo[] deteilLevels;
         public static float maxViewDst;
 
@@ -15,7 +15,7 @@ namespace XTCode.Terrain {
             viewer = transform;
         }
 
-        public static Transform viewer; //TODO: Make List
+        public static Transform viewer { get; set; } //TODO: Make List
         public Transform localViewer;
         public Material mapMaterial;
 
@@ -27,10 +27,11 @@ namespace XTCode.Terrain {
 
         public int zOffset;
         public int meshObkectLayer;
-        public bool useColider;
 
         Dictionary<Vector2, TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
         static   List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
+
+        public GameObject waterPlane;
 
         void Start() {
             viewer = localViewer;
@@ -38,7 +39,7 @@ namespace XTCode.Terrain {
             mapGenerator = FindObjectOfType<MapGenerator>();
 
             maxViewDst = deteilLevels[deteilLevels.Length - 1].visableDstThreshold;
-            chunkSize = MapGenerator.MAP_CHUNK_SIZE - 1;
+            chunkSize = mapGenerator.MAP_CHUNK_SIZE - 1;
             chunksVisibleInViewDst = Mathf.RoundToInt(maxViewDst / chunkSize);
 
             UpdateVisibleChunks();
@@ -71,7 +72,7 @@ namespace XTCode.Terrain {
                     if (terrainChunkDictionary.ContainsKey(viewedChunkCoord)) {
                         terrainChunkDictionary[viewedChunkCoord].UpdateTerrainChunk();
                     } else {
-                        terrainChunkDictionary.Add(viewedChunkCoord, new TerrainChunk(viewedChunkCoord, zOffset, meshObkectLayer, useColider, chunkSize, deteilLevels, transform, mapMaterial)); ;
+                        terrainChunkDictionary.Add(viewedChunkCoord, new TerrainChunk(viewedChunkCoord, zOffset, meshObkectLayer, chunkSize, deteilLevels, transform, mapMaterial)); ;
                     }
 
                 }
@@ -96,12 +97,13 @@ namespace XTCode.Terrain {
             bool mapDataRecieved;
             int previousLODIndex = -1;
 
-            public TerrainChunk(Vector2 coord, int zOffset, int meshObkectLayer, bool useColider, int size, LODInfo[] deteilLevels, Transform parent, Material material) {
+            public TerrainChunk(Vector2 coord, int zOffset, int meshObkectLayer, int size, LODInfo[] deteilLevels, Transform parent, Material material) {
                 this.deteilLevels = deteilLevels;
 
                 position = coord * size;
                 bounds = new Bounds(position, Vector2.one * size);
                 Vector3 positionV3 = new Vector3(position.x, zOffset, position.y);
+
 
                 meshObject = new GameObject("TerainChunk");
                 meshRenderer = meshObject.AddComponent<MeshRenderer>();
@@ -130,7 +132,7 @@ namespace XTCode.Terrain {
                 this.mapData = mapData;
                 mapDataRecieved = true;
 
-                Texture2D texture = TextureGenerator.TextureFromColourMap(mapData.colorMap, MapGenerator.MAP_CHUNK_SIZE, MapGenerator.MAP_CHUNK_SIZE);
+                Texture2D texture = TextureGenerator.TextureFromColourMap(mapData.colorMap, mapGenerator.MAP_CHUNK_SIZE, mapGenerator.MAP_CHUNK_SIZE);
                 meshRenderer.material.mainTexture = texture;
 
 
@@ -166,7 +168,7 @@ namespace XTCode.Terrain {
                         }
                     }
 
-                    if(lodIndex == 0) {
+                    if (lodIndex == 0) {
                         if (colisionLODMesh.hasMesh)
                             meshCollider.sharedMesh = colisionLODMesh.mesh;
                         else if (!colisionLODMesh.requested) {
@@ -218,6 +220,7 @@ namespace XTCode.Terrain {
                 mapGenerator.RequestMeshData(mapData, lod, OnMahsDataReceived);
             }
         }
+        
         [System.Serializable]
         public struct LODInfo {
             public int lod;

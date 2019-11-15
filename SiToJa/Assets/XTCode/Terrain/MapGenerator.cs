@@ -20,13 +20,9 @@ namespace XTCode.Terrain {
         public TerrainType[] regions;
         public float[,] falloffMap;
 
-        static MapGenerator instance;
-        public static int MAP_CHUNK_SIZE {
+        public int MAP_CHUNK_SIZE {
             get {
-                if (instance == null)
-                    instance = FindObjectOfType<MapGenerator>();
-
-                if (instance.terrainData.useFaltShading)
+                if (terrainData.useFaltShading)
                     return 95;
                 else
                     return 239;

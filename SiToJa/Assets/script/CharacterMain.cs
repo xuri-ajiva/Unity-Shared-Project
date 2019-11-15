@@ -12,6 +12,7 @@ public class CharacterMain : NetworkBehaviour {
         if (hasAuthority) {
             XTCode.Terrain.EndlessTerrain.SetViewer(this.transform);
 
+            followObject.toFolow = transform;
 
             Camera.SetupCurrent(this._playerCam);
             //TODO: WY not working ???

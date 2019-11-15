@@ -68,11 +68,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 980333430572915494}
-  speed: 121.4
+  speed: 20
   gravity: -19.62
-  jumpHeight: 62.2
+  jumpHeight: 5
   groundCheck: {fileID: 980333431947571965}
-  groundDistance: 2.66
+  groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -108,7 +108,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &5795124349480893734
 MonoBehaviour:
   m_ObjectHideFlags: 0
