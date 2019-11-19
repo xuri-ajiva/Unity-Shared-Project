@@ -12,7 +12,6 @@ Assets/AssetStoreTools*
 ExportedObj/
 .consulo/
 *.csproj
-#*.unityproj
 *.sln
 *.suo
 *.tmp
@@ -45,5 +44,7 @@ sysinfo.txt
 
 # custon
 *Assembly-CSharp.csproj
+*.csproj
+*.sln
 *.csproj
 *.sln

@@ -28,7 +28,8 @@ public class Mouselook : MonoBehaviour
         playerBody.Rotate(Vector3.up * mouseX);
 
         if ( Input.GetKeyDown( KeyCode.Escape ) ) {
-            Cursor.lockState = CursorLockMode.None;
+            Debug.Break();
+            //Cursor.lockState = CursorLockMode.None;
         }
     }
 }
