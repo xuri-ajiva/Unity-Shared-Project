@@ -63,11 +63,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\script\Bewegung.cs" />
+    <Compile Include="Assets\script\CharacterMain.cs" />
     <Compile Include="Assets\script\Mouselook.cs" />
     <Compile Include="Assets\script\Test.cs" />
+    <Compile Include="Assets\TerainGenMain.cs" />
+    <Compile Include="Assets\XTCode\ChunkData.cs" />
+    <Compile Include="Assets\XTCode\ChunkGenerator.cs" />
+    <Compile Include="Assets\XTCode\Noise.cs" />
     <Compile Include="Assets\XTCode\PlayerConectionScript.cs" />
     <Compile Include="Assets\XTCode\TerainGenerator.cs" />
+    <Compile Include="Assets\XTCode\Terrain\Noise.cs" />
     <Compile Include="Assets\XTCode\XConst.cs" />
+    <Compile Include="Assets\XTCode\XLink.cs" />
+    <None Include="Assets\XTCode\Terrain\idear.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/jakob/Documents/UnityProjekt/Unity-Shared-Project/SiToJa/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
