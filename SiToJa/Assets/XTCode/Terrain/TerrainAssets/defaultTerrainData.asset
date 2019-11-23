@@ -13,66 +13,48 @@ MonoBehaviour:
   m_Name: defaultTerrainData
   m_EditorClassIdentifier: 
   autoUpdata: 1
-  uniformScale: 2
-  useFaltShading: 0
+  uniformScale: 10
+  useFaltShading: 1
   useFalloffMap: 0
   meshHeightMultiplier: 100
   meshHeightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0006933757
-      value: -0.25285846
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      time: 0
+      value: -0.2
+      inSlope: 0.4347826
+      outSlope: 0.4347826
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.45129964
-      value: -0.020141602
-      inSlope: 0
-      outSlope: 0.61034703
-      tangentMode: 65
+      time: 0.46
+      value: 0
+      inSlope: 0.7928755
+      outSlope: 0.7928755
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
-      value: 0.0095825195
-      inSlope: 0.61034703
-      outSlope: 0.58550894
-      tangentMode: 5
+      time: 0.88144237
+      value: 0.48506686
+      inSlope: 2.7471416
+      outSlope: 2.7471416
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.64745605
-      value: 0.42305258
-      inSlope: 2.4413397
-      outSlope: 2.4413397
-      tangentMode: 1
+      time: 1
+      value: 1
+      inSlope: 4.3433146
+      outSlope: 4.3433146
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.7927397
-      value: 0.6243615
-      inSlope: 1.4932867
-      outSlope: 1.4932867
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0409214
-      value: 1.1791698
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

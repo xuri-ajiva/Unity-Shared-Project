@@ -5,7 +5,7 @@ using System;
 
 namespace XTCode.Terrain {
     public class EndlessTerrain : MonoBehaviour {
-        const float viewerMoveThresholdBeforUpdate = 25F;
+        const float viewerMoveThresholdBeforUpdate = 10F;
         const float sqrviewerMoveThresholdBeforUpdate = viewerMoveThresholdBeforUpdate * viewerMoveThresholdBeforUpdate;
 
         public LODInfo[] deteilLevels;
@@ -50,6 +50,7 @@ namespace XTCode.Terrain {
 
             viewerPosition = new Vector2(viewer.position.x, viewer.position.z) / mapGenerator.terrainData.uniformScale;
             if ((viewerPositionOld - viewerPosition).sqrMagnitude > sqrviewerMoveThresholdBeforUpdate) {
+                Debug.Log($"UpdatePlayerPositionCheck: Changed from [{viewerPositionOld}] to [{viewerPosition}]");
                 viewerPositionOld = viewerPosition;
                 UpdateVisibleChunks();
             }
